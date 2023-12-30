@@ -1,0 +1,44 @@
+<div>
+  <input type="text" [(ngModel)]="searchQuery" (keyup.enter)="search()" placeholder="Search by title or description" style="margin:10px;max-width:400px">
+  <a class="waves-effect waves-light btn" (click)="search()" style="margin:10px">Search</a>
+</div>
+
+<div *ngIf="searchResults.length > 0" style="margin:10px">
+  <div *ngFor="let result of searchResults">
+    <mat-card class="result-card">
+      <mat-card-header>
+        <mat-card-title>{{ result.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ result.description }}</p>
+        <p><strong>Category:</strong> {{ result.category }}</p>
+      </mat-card-content>
+      <mat-card-actions style="margin:10px">
+        <div *ngIf="result.collection === 'todo'"><b>To Do </b><mat-icon style="color:blue;padding-top:6px">edit_note</mat-icon></div>
+        <div *ngIf="result.collection === 'inProgress'"><b>In Progress </b><mat-icon style="color:orange;padding-top:6px">engineering</mat-icon></div>
+        <div *ngIf="result.collection === 'done'"><b>Done </b><mat-icon style="color:green;padding-top:6px">done</mat-icon></div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+<div *ngIf="searchResults.length === 0 && searchQuery !== ''">
+  <p>No results found</p>
+</div>
+
+<!-- Materialize Checkbox Structure -->
+<div class="row" style="margin:10px">
+    <div *ngFor="let category of categories">
+      <p>
+        <label>
+          <input type="checkbox" (change)="filterByCategory(category)" [checked]="selectedCategories.includes(category)" />
+          <span style="color: black;">{{ category }}</span>
+        </label>
+      </p>
+    </div>
+  </div>
+  
+  <div *ngIf="searchResults.length > 0" style="margin:10px">
+      <a class="waves-effect waves-light btn" (click)="sortTasksAscending()" style="margin:10px">Sort Ascending</a>
+      <a class="waves-effect waves-light btn" (click)="sortTasksDescending()" style="margin:10px">Sort Descending</a>
+  </div>
+  

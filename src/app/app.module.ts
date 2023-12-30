@@ -17,6 +17,8 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
+import { TaskSearchComponent } from './task-search/task-search.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { environment } from '../environments/environment';
     AppComponent,
     TaskComponent,
     TaskDialogComponent,
+    TaskSearchComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

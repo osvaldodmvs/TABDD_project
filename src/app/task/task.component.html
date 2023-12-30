@@ -1,12 +1,11 @@
-<mat-card class="item" *ngIf="task" (dblclick)="edit.emit(task)">
-    <h2>{{ task.title }}</h2>
-    <p>
+<mat-card class="item" *ngIf="task" (dblclick)="edit.emit(task)" style="margin:5px">
+    <h2 style="margin:5px">{{ task.title }}</h2>
+    <p style="margin:5px">
       {{ task.description }}
     </p>
-    <p>
+    <p style="margin:5px">
     <b>
         {{ task.category }}
     </b>
     </p>    
 </mat-card>
-  
